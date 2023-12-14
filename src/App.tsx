@@ -2,29 +2,51 @@ import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import Listing from './components/Listing';
-import json from './data.json';
 import etsy from './etsy.json'
 
-type Data = {
-  json: {
-    listing_id: number,
-    url: string,
-    MainImage: {
-      url_570xN: string,
-    },
-    title: string,
-    currency_code: string,
-    price: string,
-    quantity: number,
-  }[],
+let jsonData: any;
+jsonData = {etsy};
+
+const fixedJsonData = jsonData.filter((item: { state: string }) => item.state === 'active');
+
+type Data = { 
+  listing_id: number,
+  url: string,
+  url_570xN: string,
+  title: string,
+  currency_code: string,
+  price: string,
+  quantity: number,
 }
-const jsonData = {etsy}: Data;
-const data = JSON.parse(jsonData);
+
+let clean: Data[];
+
+clean = fixedJsonData.map((item: { 
+  listing_id: number,
+   url: string,
+   MainImage: { url_570xN: string, },
+   title: string,
+   currency_code: string,
+   price: string,
+   quantity: number,
+  }) => (
+  {
+    listing_id: item.listing_id,
+    url: item.url,
+    url_570xN: item.MainImage.url_570xN,
+    title: item.title,
+    currency_code: item.currency_code,
+    price: item.price,
+    quantity: item.quantity,
+  }
+));
 
 function App() {
+  console.log(fixedJsonData);
+  
   return (
     <>Voila
-    <Listing items={data}/>
+    <Listing items={clean}/>
     </>
     // <div className="App">
     //   <header className="App-header">
