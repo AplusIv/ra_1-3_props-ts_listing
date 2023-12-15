@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ra_1-3_props-ts_listing/static/css/main.0f50bcfa.css",
+    "main.js": "/ra_1-3_props-ts_listing/static/js/main.a3b0bfaf.js",
+    "static/js/787.939a0cad.chunk.js": "/ra_1-3_props-ts_listing/static/js/787.939a0cad.chunk.js",
+    "index.html": "/ra_1-3_props-ts_listing/index.html",
+    "main.0f50bcfa.css.map": "/ra_1-3_props-ts_listing/static/css/main.0f50bcfa.css.map",
+    "main.a3b0bfaf.js.map": "/ra_1-3_props-ts_listing/static/js/main.a3b0bfaf.js.map",
+    "787.939a0cad.chunk.js.map": "/ra_1-3_props-ts_listing/static/js/787.939a0cad.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0f50bcfa.css",
+    "static/js/main.a3b0bfaf.js"
+  ]
+}
