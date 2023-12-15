@@ -1,39 +1,13 @@
-import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import Listing from './components/Listing';
 import etsy from './etsy.json'
 
-let jsonData: any;
-jsonData = {etsy};
-
-const fixedJsonData = jsonData.filter((item: { state: string }) => item.state === 'active');
-
-type Data = { 
-  listing_id: number,
-  url: string,
-  url_570xN: string,
-  title: string,
-  currency_code: string,
-  price: string,
-  quantity: number,
-}
-
-let clean: Data[];
-
-clean = fixedJsonData.map((item: { 
-  listing_id: number,
-   url: string,
-   MainImage: { url_570xN: string, },
-   title: string,
-   currency_code: string,
-   price: string,
-   quantity: number,
-  }) => (
+const fixedJsonData = etsy.filter((item) => item.state === 'active');
+const cleanData = fixedJsonData.map((item) => (
   {
     listing_id: item.listing_id,
     url: item.url,
-    url_570xN: item.MainImage.url_570xN,
+    url_570xN: item.MainImage?.url_570xN, // ? - в первичных данных может не быть MainImage
     title: item.title,
     currency_code: item.currency_code,
     price: item.price,
@@ -42,28 +16,9 @@ clean = fixedJsonData.map((item: {
 ));
 
 function App() {
-  console.log(fixedJsonData);
-  
+ 
   return (
-    <>Voila
-    <Listing items={clean}/>
-    </>
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.tsx</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
+    <Listing items={cleanData}/>
   );
 }
 
